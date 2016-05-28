@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>圆形进度条</title>
+    <style>
+        .mjjd{position:relative;padding:0!important;}
+        .mjjd span{position:absolute;top:34px;left:22px; color:#6e9fff;}
+        .mjjd span.s2{top:10px; left:12px;}
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script src="circle_progress.js"></script>
+</head>
+<body>
+<div class="mjjd">
+    <span style="font-size:24px; margin-top:-8px; margin-left:-3px;">集</span>
+    <span class="s2"></span>
+</div>
+
+
+<script>
+    //进度
+    var progress =0.556;
+    $('.s2').text(100*(progress*1000)/1000+'%');  //先把小数点化为整数，最后再化为小数点，这是为了解决JS浮点运算的BUG
+    $('.mjjd').circleProgress({  //支持小数
+        value: progress,   //必填0-1，完成的百分比
+        startAngle:11,  //角度
+        size: 64,       //圆宽高度
+        thickness:2,   //圆的边框宽度
+        lineCap:'butt', //圆弧的线头样式 默认butt
+        animation:false,  //是否动画效果  { duration: 1000} //动画时长
+        emptyFill:'#c4c4c4',   //进度条底色
+        fill: {
+            color: "#6e9fff"   //进度条颜色
+        }
+    });
+</script>
+</body>
+</html>
